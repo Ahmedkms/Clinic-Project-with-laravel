@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -14,9 +16,9 @@ Route::get('/',function(){
     })->name('index_page');
     
 
-// Route::get('index',function(){
-// return view('index');
-// })->name('index_page');
+Route::get('index',function(){
+return view('index');
+})->name('index_page');
 
 Route::get('index',[PageController::class, 'index'])->name('index_page');
 Route::get('doctor-index',[PageController::class, 'doctor_index'])->name('doctor_index');
@@ -33,6 +35,13 @@ Route::get('register', [PageController::class,'register']
 
 Route::post('contactAction',[PageController::class,'contactAction'])->name('contacAction');
 Route::get('contactView',[PageController::class,'contactView'])->name('contactView');
+
+
+Route::get('newDoctor',[DoctorController::class,'filldataToDoctrosI']);
+
+Route::post('addNewUser',[UserController::class,'addNewuser'])->name('addUser');
+
+
 
 
 
