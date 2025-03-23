@@ -2,16 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Doctor extends Model
 {
-    //filliable
-    protected $fillable = [
-        'name',
-        'specialization',
-        'email',
-        'phone',
-        'image'
-    ];
+    use HasFactory;
+    public function major(){
+        return $this->belongsTo(Major::class);
+    }
 }

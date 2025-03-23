@@ -1,25 +1,17 @@
 <?php
-
-use App\Http\Controllers\DoctorController;
-use App\Http\Controllers\PageController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AppointmentsController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-// Route::get('/app', function () {
-//     return view('app');
-// });
+
 Route::get('/',function(){
     return view('index'); 
     })->name('index_page');
     
-
 Route::get('index',function(){
 return view('index');
 })->name('index_page');
-
 Route::get('index',[PageController::class, 'index'])->name('index_page');
 Route::get('doctor-index',[PageController::class, 'doctor_index'])->name('doctor_index');
 Route::get('booking',[PageController::class, 'booking'])->name('doctors-book');
@@ -36,12 +28,12 @@ Route::get('register', [PageController::class,'register']
 Route::post('contactAction',[PageController::class,'contactAction'])->name('contacAction');
 Route::get('contactView',[PageController::class,'contactView'])->name('contactView');
 
+// Route::get('fakeData', function(){
+//  User::factory(5000)->create();
+// });
 
-Route::get('newDoctor',[DoctorController::class,'filldataToDoctrosI']);
-
-Route::post('addNewUser',[UserController::class,'addNewuser'])->name('addUser');
-
-
+Route::get('dashboard',[AdminController::class,'dashbardHome'])->name('dashboard');
+Route::get("/appointments",[AppointmentsController::class,"index"])->name("appointments.index");
 
 
 
